@@ -1,0 +1,10 @@
+.filters {
+  margin-right: 40px;
+  max-width: 250px;
+  font-family: Karla;
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 60px;
+    }
+  }
+}

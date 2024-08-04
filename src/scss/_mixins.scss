@@ -1,0 +1,17 @@
+@mixin line-height($lineHeight, $fontSize) {
+  line-height: calc(#{$lineHeight} / #{$fontSize} * 100%);
+}
+
+$maxWidth: 1440;
+$containerWidth: 1160;
+
+@mixin adaptive-value($property, $startSize, $minSize) {
+  $addSize: $startSize - $minSize;
+  #{$property}: $startSize + px;
+  @media (max-width: #{$containerWidth + px}) {
+    #{$property}: calc(
+      #{$minSize + px} + #{$addSize} *
+        ((100vw - 320px) / #{$containerWidth - 320})
+    );
+  }
+}

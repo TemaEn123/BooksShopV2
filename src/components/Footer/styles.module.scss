@@ -1,0 +1,22 @@
+@import "../../scss/vars";
+@import "../../scss/mixins";
+
+.footer {
+  background: $orange;
+  @include adaptive-value("padding-top", 30, 20);
+  @include adaptive-value("padding-bottom", 30, 20);
+  &__content {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: flex-end;
+  }
+  &__year {
+    @include adaptive-value("font-size", 16, 14);
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

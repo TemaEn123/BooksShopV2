@@ -1,0 +1,154 @@
+@import "./vars";
+@import "./mixins";
+
+// @media screen and (max-width: 1400px) {
+
+// }
+// @media screen and (max-width: 1200px) {
+
+// }
+// @media screen and (max-width: 992px) {
+
+// }
+// @media screen and (max-width: 768px) {
+
+// }
+// @media screen and (max-width: 576px) {
+
+// }
+// @media screen and (max-width: 375px) {
+
+// }
+
+@media screen and (max-width: 1440px) {
+  .topBlock {
+    background: url(/src/img/TopBlock/cube.png) right bottom / 130px no-repeat,
+      url(/src/img/TopBlock/circle.png) right -150px center / 300px no-repeat,
+      url(/src/img/TopBlock/back.png) right top / 50% 100% no-repeat;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .menu {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    top: 0;
+    z-index: 10;
+    justify-content: center;
+    transition: left 0.3s ease 0s;
+    left: -100%;
+    overflow: auto;
+    padding: 200px 15px 15px;
+    &::before {
+      content: "";
+      width: 102%;
+      background-color: $orange;
+      height: 118px;
+      position: fixed;
+      top: 0;
+      transition: left 0.3s ease 0s;
+      left: -102%;
+      z-index: 5;
+    }
+    &.show {
+      left: 0px;
+      &:before {
+        left: -1px;
+      }
+    }
+    &__list {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+    &__item {
+      font-size: 30px;
+      &:not(:last-child) {
+        margin: 0 0 30px 0;
+      }
+      &.hover {
+        & a {
+          &::before {
+            top: 110%;
+          }
+        }
+      }
+    }
+  }
+  .header {
+    background: $orange;
+    &__menuIcon {
+      display: flex;
+    }
+    &__logo {
+      color: #fff;
+    }
+    &__cart {
+      color: #fff;
+    }
+  }
+  .topBlock {
+    margin: 0;
+    background: none;
+    &__content {
+      padding: 100px 0 70px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .topBlock {
+    &__content {
+      background: none;
+      &.blog {
+        background: none;
+      }
+    }
+    &__info {
+      flex: 1 1 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .header {
+    padding: 20px 0;
+    &__login {
+      background: none;
+      padding: 0;
+      font-size: 30px;
+      & span {
+        display: none;
+      }
+      & svg {
+        display: block;
+      }
+    }
+    &__menuIcon {
+      margin-left: 10px;
+    }
+  }
+  .menu {
+    padding: 140px 15px 15px;
+    &::before {
+      height: 70px;
+    }
+  }
+  .topBlock {
+    &__content {
+      padding: 50px 0 50px;
+    }
+    &__search {
+      & input {
+        padding: 15px 15px 15px 42px;
+      }
+    }
+  }
+}
