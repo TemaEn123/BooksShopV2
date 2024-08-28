@@ -1,0 +1,35 @@
+@import "../../../scss/mixins";
+
+.skeleton {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex: 0 1 25%;
+  padding: 0 10px;
+  margin-bottom: 50px;
+  &.slider {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+    flex: 1 1 auto;
+  }
+  & > div {
+    background-color: #ebebec;
+  }
+  &__img {
+    padding-bottom: 132%;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  &__title {
+    width: 80%;
+    margin-bottom: 20px;
+    @include adaptive-value("height", 25, 18);
+  }
+  &__rating {
+    width: 50%;
+    @include adaptive-value("height", 25, 20);
+  }
+}
+
+@import "../../../scss/media";

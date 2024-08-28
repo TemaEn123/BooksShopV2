@@ -1,0 +1,16 @@
+@import "../../scss/mixins";
+
+.similarBooks {
+  max-width: 350px;
+  min-width: 350px;
+  & h2 {
+    color: #fff;
+    font-weight: 500;
+
+    @include adaptive-value("font-size", 35, 25);
+
+    @include adaptive-value("margin-bottom", 30, 20);
+  }
+}
+
+@import "../../scss/media";

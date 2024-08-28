@@ -1,0 +1,33 @@
+@import "../../scss/mixins";
+
+.blogItemSkeleton {
+  padding: 0 13px;
+  flex: 1 1 33.3333%;
+  @include adaptive-value("margin-bottom", 66, 46);
+  &__img {
+    background-color: #ebebec;
+    padding-bottom: 90%;
+    @include adaptive-value("margin-bottom", 40, 20);
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__title {
+    background-color: #ebebec;
+    width: 80%;
+    @include adaptive-value("height", 25, 20);
+    @include adaptive-value("margin-bottom", 19, 14);
+  }
+  &__text {
+    background-color: #ebebec;
+    width: 80%;
+    &:not(:last-child) {
+      margin-bottom: 7px;
+    }
+    @include adaptive-value("height", 16, 14);
+  }
+}
+
+@import "../../scss/media";

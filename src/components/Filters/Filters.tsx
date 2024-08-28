@@ -1,8 +1,15 @@
-import { useState } from "react";
+import React, { memo, useEffect, useState } from "react";
+
+import { useAppDispatch } from "../../redux/store";
+import { changeFilters } from "../../redux/slices/filtersSlice";
+
+import { useRangeChange } from "../../helpers/hooks/useRangeChange";
 
 import Genres from "../Genres/Genres";
 import SortRating from "../SortRating/SortRating";
 import FiltersTitle from "../ui/FiltersTitle/FiltersTitle";
+import Search from "../Search/Search";
+import { IoMdClose } from "react-icons/io";
 
 import {
   MAX_RATING,
@@ -12,44 +19,66 @@ import {
 } from "../../constants/constants";
 
 import styles from "./styles.module.scss";
-import Search from "../Search/Search";
 
-const Filters = () => {
-  const [ratingValue, setRatingValue] = useState<[number, number]>([2, 5]);
-  const [yearsValue, setYearsValue] = useState<[number, number]>([1700, 2024]);
+interface Props {
+  showFilters: boolean;
+  setShowFilters: React.Dispatch<React.SetStateAction<boolean>>;
+  currentGenre: { category?: string };
+}
 
-  const handleRatingChange = (type: "from" | "to", value: number) => {
-    if (type === "from") {
-      if (value < MIN_RATING) setRatingValue([MIN_RATING, ratingValue[1]]);
-      if (value > ratingValue[1])
-        setRatingValue([ratingValue[1], ratingValue[1]]);
-    } else {
-      if (value < ratingValue[0])
-        setRatingValue([ratingValue[0], ratingValue[0]]);
-      if (value > MAX_RATING) setRatingValue([ratingValue[0], MAX_RATING]);
-    }
+const Filters = memo(({ showFilters, setShowFilters, currentGenre }: Props) => {
+  const [ratingValue, setRatingValue] = useState<[number, number]>([
+    4,
+    MAX_RATING,
+  ]);
+
+  const [yearsValue, setYearsValue] = useState<[number, number]>([
+    1950,
+    MAX_YEAR,
+  ]);
+
+  const dispatch = useAppDispatch();
+
+  const { handleRatingChange, handleYearsChange } = useRangeChange({
+    setRatingValue,
+    ratingValue,
+    setYearsValue,
+    yearsValue,
+  });
+
+  const handleSearch = (debouncedSearch: string | undefined) => {
+    dispatch(changeFilters({ key: "authors", value: debouncedSearch }));
   };
 
-  const handleYearsChange = (type: "from" | "to", value: number) => {
-    if (type === "from") {
-      if (value < MIN_YEAR) setYearsValue([MIN_YEAR, yearsValue[1]]);
-      if (value > yearsValue[1]) setYearsValue([yearsValue[1], yearsValue[1]]);
+  useEffect(() => {
+    if (showFilters) {
+      document.body.classList.add("lock");
     } else {
-      if (value < yearsValue[0]) setYearsValue([yearsValue[0], yearsValue[0]]);
-      if (value > MAX_RATING) setYearsValue([yearsValue[0], MAX_YEAR]);
+      document.body.classList.remove("lock");
     }
-  };
+  }, [showFilters]);
 
   return (
-    <aside className={styles.filters}>
+    <aside className={`${styles.filters} ${showFilters ? styles.show : ""}`}>
+      <button
+        onClick={() => setShowFilters(false)}
+        className={styles.filters__show}
+        aria-label="close filters"
+      >
+        <IoMdClose />
+      </button>
       <div className={styles.filters__content}>
         <div className={styles.filters__item}>
           <FiltersTitle title="Books by Genre" />
-          <Genres />
+          <Genres currentGenre={currentGenre} />
         </div>
         <div className={styles.filters__item}>
           <FiltersTitle title="by Author" />
-          <Search type="author" placeholder="Search Author" />
+          <Search
+            type="author"
+            placeholder="Search Author"
+            handleSearch={handleSearch}
+          />
         </div>
         <div className={styles.filters__item}>
           <FiltersTitle title="by Rating" />
@@ -74,6 +103,6 @@ const Filters = () => {
       </div>
     </aside>
   );
-};
+});
 
 export default Filters;

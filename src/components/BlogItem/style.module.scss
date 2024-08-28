@@ -1,0 +1,61 @@
+@import "../../scss/mixins";
+
+.blogItem {
+  padding: 0 13px;
+  flex: 1 1 33.3333%;
+  margin-bottom: 26px;
+  &__wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  &__img {
+    background-color: #ebebec;
+    position: relative;
+    display: block;
+    padding-bottom: 90%;
+    & img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+    }
+  }
+  &__text {
+    flex: 1 1 auto;
+    text-align: center;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include adaptive-value("padding", 40, 20);
+    & h4 {
+      color: #000;
+      font-weight: 500;
+      transition: opacity 0.3s ease 0s;
+      &:hover {
+        opacity: 0.7;
+      }
+
+      @include adaptive-value("font-size", 25, 20);
+
+      @include adaptive-value("margin-bottom", 19, 14);
+
+      @include line-height(30, 25);
+    }
+    & p {
+      font-family: Rambla;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      @include line-height(30, 16);
+      @include adaptive-value("font-size", 16, 14);
+    }
+  }
+}
+
+@import "../../scss/media";

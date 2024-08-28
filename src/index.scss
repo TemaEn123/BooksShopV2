@@ -4,11 +4,16 @@
 
 @import "./scss/_normalize.scss";
 @import "./scss/_mixins.scss";
-@import "./scss/_media.scss";
 @import "./scss/_vars.scss";
+@import "./scss/custom.scss";
 
-body.lock {
-  overflow: hidden;
+body {
+  &.lock {
+    overflow: auto;
+  }
+  &.modalLock {
+    overflow: hidden;
+  }
 }
 
 #root {
@@ -29,24 +34,7 @@ body.lock {
   padding: 90px 0 80px;
   flex: 1 1 auto;
   background-color: #f5f6f8;
+  position: relative;
 }
 
-.button-hover {
-  transition: transform 0.5s ease 0s;
-  &:hover {
-    transform: translateY(-3px);
-  }
-}
-
-.range-slider {
-  height: 4px;
-  background-color: #dddddd;
-  &__thumb {
-    background: $orange !important;
-    width: 16px !important;
-    height: 16px !important;
-  }
-  &__range {
-    background: $orange !important;
-  }
-}
+@import "./scss/_media.scss";

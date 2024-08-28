@@ -1,0 +1,46 @@
+@import "../../scss/mixins";
+@import "../../scss/vars";
+
+.article {
+  @include adaptive-value("margin-top", -500, -380);
+
+  &__img {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+    & img {
+      width: 100%;
+      max-width: 500px;
+    }
+  }
+  &__arrow {
+    background: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    @include adaptive-value("font-size", 60, 30);
+    & svg {
+      color: $orange;
+    }
+  }
+  &__text {
+    text-align: center;
+    & h1 {
+      font-weight: 600;
+      line-height: 135%;
+      margin-bottom: 30px;
+
+      @include adaptive-value("font-size", 50, 26);
+    }
+    & p {
+      font-size: 20px;
+      line-height: 200%;
+
+      @include adaptive-value("font-size", 20, 16);
+    }
+  }
+}
+
+@import "../../scss/media";

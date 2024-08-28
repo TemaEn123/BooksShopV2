@@ -1,0 +1,19 @@
+@import "../../../scss/mixins";
+@import "../../../scss/media";
+
+.error {
+  padding: 90px 0 80px;
+  & p {
+    text-align: center;
+    line-height: 140%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include adaptive-value("font-size", 30, 20);
+  }
+}

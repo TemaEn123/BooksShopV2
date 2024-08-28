@@ -1,0 +1,14 @@
+@import "../../../scss/mixins";
+
+.paginationSkeleton {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  @include adaptive-value("margin-top", 50, 10);
+  & > div {
+    background-color: #ebebec;
+    margin: 0 2.5px;
+    @include adaptive-value("width", 40, 20);
+    @include adaptive-value("height", 40, 20);
+  }
+}

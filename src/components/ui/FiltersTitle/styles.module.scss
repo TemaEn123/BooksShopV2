@@ -1,5 +1,9 @@
+@import "../../../scss/mixins";
+
 .title {
   font-weight: 700;
-  font-size: 25px;
-  margin-bottom: 17px;
+
+  @include adaptive-value("font-size", 25, 20);
+
+  @include adaptive-value("margin-bottom", 17, 12);
 }

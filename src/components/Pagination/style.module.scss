@@ -1,0 +1,33 @@
+@import "../../scss/vars";
+@import "../../scss/mixins";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  @include adaptive-value("margin-top", 50, 10);
+  & button {
+    margin: 0 2.5px;
+    background: none;
+    transition: all 0.3s ease 0s;
+    &:hover {
+      background-color: #f7b363;
+      color: #fff;
+    }
+    &.active {
+      background-color: $orange;
+      color: #fff;
+    }
+    @include adaptive-value("font-size", 20, 12);
+    @include adaptive-value("padding", 10, 4);
+  }
+  & span {
+    margin: 0 2.5px;
+    display: flex;
+    align-items: flex-end;
+    @include adaptive-value("padding", 10, 3);
+    @include adaptive-value("font-size", 20, 10);
+  }
+}
+
+@import "../../scss/media";

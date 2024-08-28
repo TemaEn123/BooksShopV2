@@ -1,0 +1,8 @@
+@import "../../../scss/mixins";
+
+.skeletonTitle {
+  background-color: #ebebec;
+  width: 150px;
+  @include adaptive-value("height", 40, 28);
+  @include adaptive-value("margin-bottom", 40, 20);
+}
