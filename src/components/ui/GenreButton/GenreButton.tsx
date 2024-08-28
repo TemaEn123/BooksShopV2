@@ -1,16 +1,17 @@
-import React from "react";
+import { memo } from "react";
+
 import styles from "./styles.module.scss";
 
 interface Props {
   title: string;
   activeGenre: string;
-  setActiveGenre: React.Dispatch<React.SetStateAction<string>>;
+  handleClickGenre: (title: string) => void;
 }
 
-const GenreButton = ({ title, activeGenre, setActiveGenre }: Props) => {
+const GenreButton = memo(({ title, activeGenre, handleClickGenre }: Props) => {
   return (
     <button
-      onClick={() => setActiveGenre(title)}
+      onClick={() => handleClickGenre(title)}
       className={`${styles.genre} ${
         activeGenre === title ? styles.active : ""
       }`}
@@ -18,6 +19,6 @@ const GenreButton = ({ title, activeGenre, setActiveGenre }: Props) => {
       {title}
     </button>
   );
-};
+});
 
 export default GenreButton;

@@ -1,6 +1,8 @@
 import { Outlet } from "react-router-dom";
+
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+import Modal from "../components/Modal/Modal";
 
 const BaseLayout = () => {
   return (
@@ -8,6 +10,7 @@ const BaseLayout = () => {
       <Header />
       <Outlet />
       <Footer />
+      <Modal />
     </>
   );
 };

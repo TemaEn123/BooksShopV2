@@ -3,6 +3,12 @@
 .topBlock {
   background: url(/src/img/TopBlock/back.png) right top / 50% 200% no-repeat;
   margin-top: -118px;
+  &.single {
+    @include adaptive-value("min-height", 583, 383);
+    & .topBlock__content {
+      background: none;
+    }
+  }
   &__container {
     width: 100%;
     max-width: 1190px;
@@ -25,16 +31,19 @@
     & h1 {
       font-weight: 700;
       text-transform: uppercase;
+
       @include adaptive-value("font-size", 75, 30);
+
       @include adaptive-value("margin-bottom", 15, 10);
+
       @include line-height(95, 75);
     }
     & p {
       font-family: Rambla;
-      @include adaptive-value("font-size", 25, 18);
-      @include line-height(25, 18);
       margin-bottom: 25px;
       text-transform: capitalize;
+      @include adaptive-value("font-size", 25, 18);
+      @include line-height(25, 18);
     }
   }
 }

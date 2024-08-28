@@ -1,0 +1,101 @@
+.button-hover {
+  transition: transform 0.5s ease 0s;
+  &:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.range-slider {
+  height: 4px;
+  background-color: #dddddd;
+  &__thumb {
+    background: $orange !important;
+    width: 16px !important;
+    height: 16px !important;
+  }
+  &__range {
+    background: $orange !important;
+  }
+}
+
+.swiper-wrapper {
+  align-items: stretch;
+}
+
+.swiper-slide {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background: orange;
+  color: #fff;
+  height: 35px;
+  width: 35px;
+  &::after {
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+.swiper-button-disabled {
+  display: none;
+}
+
+.swiper-button-next {
+  right: 0;
+}
+
+.swiper-button-prev {
+  left: 0;
+}
+
+.reactSelect {
+  width: 100%;
+  max-width: 250px;
+  &__indicator {
+    cursor: pointer;
+  }
+  &__single-value {
+    overflow: visible;
+  }
+  &__control {
+    &--is-focused {
+      border-color: orange !important;
+      box-shadow: 0 0 0 1px orange !important;
+    }
+  }
+  &__menu {
+    & * {
+      background-color: #fff !important;
+      color: #000 !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease 0s;
+      &:hover {
+        background-color: #ececec !important;
+      }
+    }
+  }
+}
+
+.search__result {
+  display: block;
+  &.none {
+    display: none;
+  }
+}
+
+.email,
+.password {
+  &.error {
+    border: 1px solid red;
+  }
+}
+
+a:focus-visible,
+input:focus-visible,
+button:focus-visible {
+  outline: 2px solid rgb(253, 174, 28);
+}

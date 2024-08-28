@@ -1,0 +1,45 @@
+@import "../../scss/vars";
+@import "../../scss/mixins";
+
+.shop {
+  display: flex;
+  justify-content: center;
+}
+
+.books {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  &__sort {
+    display: flex;
+    margin-bottom: 30px;
+  }
+  &__filtersIcon {
+    background: none;
+    margin-left: 20px;
+    display: none;
+    align-items: center;
+    & svg {
+      font-size: 35px;
+      & path {
+        fill: $orange;
+      }
+    }
+  }
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+    &_empty {
+      justify-content: center;
+      align-items: center;
+      @include adaptive-value("font-size", 50, 25);
+    }
+  }
+  &__warn {
+    text-align: center;
+    line-height: 140%;
+  }
+}
+
+@import "../../scss/media";

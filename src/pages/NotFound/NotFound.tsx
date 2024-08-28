@@ -7,8 +7,8 @@ const NotFound = () => {
   return (
     <>
       <Header />
-      <main className="main">
-        <section>404</section>
+      <main className="main" style={{ display: "flex" }}>
+        <section className={styles.notFound}>404</section>
       </main>
       <Footer />
     </>

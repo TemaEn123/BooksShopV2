@@ -1,4 +1,7 @@
+import { memo } from "react";
+
 import RangeSlider from "react-range-slider-input";
+
 import "react-range-slider-input/dist/style.css";
 
 interface Props {
@@ -8,8 +11,8 @@ interface Props {
   max: number;
 }
 
-const RangeRating = ({ value, setValue, min, max }: Props) => {
+const RangeRating = memo(({ value, setValue, min, max }: Props) => {
   return <RangeSlider min={min} max={max} value={value} onInput={setValue} />;
-};
+});
 
 export default RangeRating;

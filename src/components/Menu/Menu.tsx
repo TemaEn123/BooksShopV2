@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, memo } from "react";
 
 import { NavLink } from "react-router-dom";
 
@@ -10,7 +10,7 @@ interface Props {
   setShowMenu?: Dispatch<SetStateAction<boolean>>;
 }
 
-const Menu = ({ isHover, showMenu, setShowMenu }: Props) => {
+const Menu = memo(({ isHover, showMenu, setShowMenu }: Props) => {
   return (
     <nav className={`${styles.menu} ${showMenu ? styles.show : ""}`}>
       <ul className={styles.menu__list}>
@@ -44,6 +44,6 @@ const Menu = ({ isHover, showMenu, setShowMenu }: Props) => {
       </ul>
     </nav>
   );
-};
+});
 
 export default Menu;
